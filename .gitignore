@@ -1,8 +1,16 @@
 
 # Playwright
+playwright-report/
+test-results/
+
+# Allure
+allure-results/
+allure-report/
+
+# Node
 node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
+
+# OS / Editor
+.DS_Store
+.vscode/
+
