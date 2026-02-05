@@ -1,5 +1,8 @@
 name: Playwright Tests with Allure
 
+permissions:
+  contents: write   # 🔥 THIS FIXES 403 ERROR
+
 on:
   push:
     branches: [ main, master ]
@@ -26,9 +29,8 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    # ✅ IMPORTANT: Install Allure CLI
     - name: Install Allure CLI
-      run: npm install -g allure-commandline --save-dev
+      run: npm install -g allure-commandline
 
     - name: Run Playwright tests (Allure enabled)
       run: npm run test:allure
@@ -45,7 +47,6 @@ jobs:
         path: allure-report/
         retention-days: 30
 
-    # ✅ Deploy ONLY if report exists
     - name: Deploy Allure Report to GitHub Pages
       if: always()
       uses: peaceiris/actions-gh-pages@v3
